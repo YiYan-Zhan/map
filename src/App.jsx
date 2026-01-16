@@ -88,6 +88,8 @@ function App() {
       setLoading(true);
       setError(null);
 
+      console.log(GOOGLE_SHEETS_CONFIG);
+
       try {
         // 步驟1: 從地圖數據源加載所有國家信息（包含座標）
         console.log("正在從地圖數據源加載國家信息...");

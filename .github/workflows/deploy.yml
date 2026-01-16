@@ -49,16 +49,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # GitHub Pages base path（根據倉庫名稱自動設置）
-          # 如果倉庫名稱是 'map'，則設置為 '/map/'
-          # 如果使用自定義域名，可以在 Secrets 中設置 VITE_BASE_PATH 為 '/'
           VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH || steps.base-path.outputs.base_path }}
-          # Google Sheets 配置（通過 GitHub Secrets 設置）
-          # 注意：GitHub Pages 是靜態託管，環境變量會在構建時注入到代碼中
-          # 這些值會被打包到構建產物中，請注意安全性
           VITE_ENABLE_GOOGLE_SHEETS: ${{ secrets.VITE_ENABLE_GOOGLE_SHEETS || 'false' }}
-          VITE_GOOGLE_SHEETS_ID: ${{ secrets.VITE_GOOGLE_SHEET_ID || '' }}
-          VITE_GOOGLE_SHEETS_NAME: ${{ secrets.VITE_GOOGLE_SHEET_NAME || 'Sheet1' }}
+          VITE_GOOGLE_SHEET_ID: ${{ secrets.VITE_GOOGLE_SHEET_ID || '' }}
+          VITE_GOOGLE_SHEET_NAME: ${{ secrets.VITE_GOOGLE_SHEET_NAME || 'Sheet1' }}
           VITE_GOOGLE_APPS_SCRIPT_URL: ${{ secrets.VITE_GOOGLE_APPS_SCRIPT_URL || '' }}
           VITE_GOOGLE_SHEETS_API_KEY: ${{ secrets.VITE_GOOGLE_SHEETS_API_KEY || '' }}
 
